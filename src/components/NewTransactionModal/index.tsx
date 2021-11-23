@@ -7,6 +7,7 @@ import Modal from 'react-modal';
 import closeImg from '../../assets/close.svg';
 import incomingImg from '../../assets/income.svg';
 import outcomeImg from '../../assets/outcome.svg';
+import { api } from '../../services/api';
 
 //Componentes estilizados
 import {
@@ -27,10 +28,12 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
     const [category, setCategory] = useState('')
     const [type, setType] = useState('deposit')
 
-    function handleCreateNewTransaction(event: FormEvent) {
+    async function handleCreateNewTransaction(event: FormEvent) {
         event.preventDefault()
 
-        console.log({ title, value, category, type })
+        const data = { title, value, type, category }
+
+        await api.post('/transactions', data)
     }
 
     return (
