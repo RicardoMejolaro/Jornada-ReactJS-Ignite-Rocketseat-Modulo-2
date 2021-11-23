@@ -33,7 +33,9 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
 
         const data = { title, value, type, category }
 
-        await api.post('/transactions', data)
+        api.post('/transaction', data)
+            .then()
+            .catch(error => console.log(error))
     }
 
     return (
