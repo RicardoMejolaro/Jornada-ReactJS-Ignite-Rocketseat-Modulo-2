@@ -12,7 +12,7 @@ import { GlobalStyle } from "./styles/global";
 import { NewTransactionModal } from './components/NewTransactionModal';
 
 //Contexto de transações
-import { TransactionsProvider } from './TransactionsContext';
+import { TransactionsProvider } from './hooks/useTransactions';
 
 //Recurso para acessibilidade do Modal
 Modal.setAppElement('#root');
