@@ -28,7 +28,7 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
     const { createTransaction } = useTransactions()
 
     const [title, setTitle] = useState('')
-    const [amount, setAmount] = useState(0)
+    const [amount, setAmount] = useState('')
     const [category, setCategory] = useState('')
     const [type, setType] = useState('deposit')
 
@@ -37,13 +37,13 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
 
         await createTransaction({
             title,
-            amount,
+            amount: Number(amount),
             category,
             type
         })
 
         setTitle('')
-        setAmount(0)
+        setAmount('')
         setCategory('')
         setType('deposit')
 
@@ -78,7 +78,7 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
                     type="number"
                     placeholder="Valor"
                     value={amount}
-                    onChange={event => setAmount(Number(event.target.value))}
+                    onChange={event => setAmount(event.target.value)}
                 />
 
                 <TransactionTypeContainer>
